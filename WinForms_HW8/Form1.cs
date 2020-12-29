@@ -29,7 +29,7 @@ namespace WinForms_HW8
             Figures f = new Figures();
             for(int i = 43; i < 443; i+= 50)                    // drawn black pawns
             {
-                f.drawPawn(e, i, 85, Color.Black);     
+                f.drawPawn(e, i, 85, Color.SaddleBrown);     
             }
             for (int i = 43; i < 443; i += 50)                   // drawn wight pawns
             {
@@ -37,7 +37,7 @@ namespace WinForms_HW8
             }
             for(int i = 94; i < 360; i += 250)                   // draw black knights
             {
-                f.drawKnight(e, i, 35, Color.Black);
+                f.drawKnight(e, i, 35, Color.SaddleBrown);
             }
             for (int i = 94; i < 360; i += 250)                  // draw wight knights
             {
@@ -45,7 +45,7 @@ namespace WinForms_HW8
             }
             for (int i = 44; i < 460; i += 350)                  // draw black rooks
             {
-                f.drawRook(e, i, 35, Color.Black);
+                f.drawRook(e, i, 35, Color.SaddleBrown);
             }
             for (int i = 44; i < 460; i += 350)                  // draw wight rooks
             {
@@ -53,15 +53,15 @@ namespace WinForms_HW8
             }
             for (int i = 144; i < 300; i += 150)                 // draw black elephants
             {
-                f.drawElephant(e, i, 35, Color.Black);
+                f.drawElephant(e, i, 35, Color.SaddleBrown);
             }
             for (int i = 144; i < 300; i += 150)                // draw wight elephants
             {
                 f.drawElephant(e, i, 385, Color.DarkGray);
             }
-            f.drawQueen(e, 191, 35, Color.Black);               // draw black queen
+            f.drawQueen(e, 191, 35, Color.SaddleBrown);               // draw black queen
             f.drawQueen(e, 191, 385, Color.DarkGray);           // draw wight queen
-            f.drawKing(e, 241, 35, Color.Black);                // draw black king
+            f.drawKing(e, 241, 35, Color.SaddleBrown);                // draw black king
             f.drawKing(e, 241, 385, Color.DarkGray);            // draw wight king
         }
             
@@ -167,7 +167,54 @@ namespace WinForms_HW8
         {
             if(e.Button == MouseButtons.Right)
             {
-
+               if(e.Location.X > 35 && e.Location.X < 430 && e.Location.Y > 85 && e.Location.Y < 130)
+                {
+                    MessageBox.Show("Black pawn");
+                }
+               else if(e.Location.X > 35 && e.Location.X < 430 && e.Location.Y > 325 && e.Location.Y < 380)
+                {
+                    MessageBox.Show("Wight pawn");
+                }
+               else if(e.Location.X > 35 && e.Location.X < 85 && e.Location.Y > 35 && e.Location.Y < 84 || e.Location.X > 380 && e.Location.X < 430 && e.Location.Y > 35 && e.Location.Y < 84)
+                {
+                    MessageBox.Show("Black rook");
+                }
+                else if (e.Location.X > 35 && e.Location.X < 85 && e.Location.Y > 385 && e.Location.Y < 434 || e.Location.X > 380 && e.Location.X < 430 && e.Location.Y > 385 && e.Location.Y < 434)
+                {
+                    MessageBox.Show("Wight rook");
+                }
+               else if(e.Location.X > 86 && e.Location.X < 134 && e.Location.Y > 35 && e.Location.Y < 84 || e.Location.X > 331 && e.Location.X < 379 && e.Location.Y > 35 && e.Location.Y < 84)
+                {
+                    MessageBox.Show("Black knight");
+                }
+                else if (e.Location.X > 86 && e.Location.X < 134 && e.Location.Y > 385 && e.Location.Y < 434 || e.Location.X > 331 && e.Location.X < 379 && e.Location.Y > 385 && e.Location.Y < 434)
+                {
+                    MessageBox.Show("Wight knight");
+                }
+                else if (e.Location.X > 140 && e.Location.X < 170 && e.Location.Y > 35 && e.Location.Y < 84 || e.Location.X > 285 && e.Location.X < 315 && e.Location.Y > 35 && e.Location.Y < 84)
+                {
+                    MessageBox.Show("Black elephant");
+                }
+                else if (e.Location.X > 140 && e.Location.X < 170 && e.Location.Y > 385 && e.Location.Y < 434 || e.Location.X > 255 && e.Location.X < 315 && e.Location.Y > 385 && e.Location.Y < 434)
+                {
+                    MessageBox.Show("Wight elephant");
+                }
+                else if (e.Location.X > 190 && e.Location.X < 220 && e.Location.Y > 35 && e.Location.Y < 84)
+                    {
+                        MessageBox.Show("Black queen");
+                    }
+                else if (e.Location.X > 190 && e.Location.X < 220 && e.Location.Y > 385 && e.Location.Y < 434)
+                {
+                    MessageBox.Show("Wight queen");
+                }
+                else if (e.Location.X > 240 && e.Location.X < 270 && e.Location.Y > 35 && e.Location.Y < 84)
+                {
+                    MessageBox.Show("Black king");
+                }
+                else if (e.Location.X > 240 && e.Location.X < 270 && e.Location.Y > 385 && e.Location.Y < 434)
+                {
+                    MessageBox.Show("Wight king");
+                }
             }
         }
     }
