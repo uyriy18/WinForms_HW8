@@ -26,8 +26,9 @@ namespace Task2
             pen = new Pen(Color.Black, 5);
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             pen.StartCap = pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+            Figure_cmbx.SelectedItem = "Pen";
         }
-
+        //Select color from panel
         private void pictureBox5_Click(object sender, EventArgs e)
         {
             PictureBox p = (PictureBox)sender;
@@ -42,16 +43,36 @@ namespace Task2
                 pointX = e.X;
                 pointY = e.Y;
             }
+            //if triangle was chosen
+            if(Figure_cmbx.SelectedItem.ToString() == "Triangle")
+            {
+                Point p = new Point(pointX, pointY);
+                pointCollection.Add(p);
+                Rectangle r = new Rectangle(pointX, pointY, 5, 5);
+                g.FillRectangle(new SolidBrush(pen.Color), r);
+                if(pointCollection.Count == 3)
+                {
+                    g.DrawLine(pen, pointCollection[0], pointCollection[1]);
+                    g.DrawLine(pen, pointCollection[1], pointCollection[2]);
+                    g.DrawLine(pen, pointCollection[2], pointCollection[0]);
+                    pointCollection.Clear();
+                }
+            }
         }
 
         private void Canvas_panel_MouseMove(object sender, MouseEventArgs e)
         {
-            if (isMoving && pointX != -10 && pointY != -10)
+            //If combo box selected item name = "Pen"
+            if(Figure_cmbx.SelectedItem.ToString() == "Pen")
             {
-                g.DrawLine(pen, new Point(pointX, pointY), e.Location);
-                pointX = e.X;
-                pointY = e.Y;
+                if (isMoving && pointX != -10 && pointY != -10)
+                {
+                    g.DrawLine(pen, new Point(pointX, pointY), e.Location);
+                    pointX = e.X;
+                    pointY = e.Y;
+                }
             }
+           
         }
 
         private void Canvas_panel_MouseUp(object sender, MouseEventArgs e)
@@ -60,14 +81,25 @@ namespace Task2
             pointX = -10;
             pointY = -10;
         }
-
-        private void ColorDialog_btn_Click(object sender, EventArgs e)
+        // Select color additional colors
+        private void ColorDialog_btn_Click(object sender, EventArgs e)    
         {
             ColorDialog cd = new ColorDialog();
             if(cd.ShowDialog() == DialogResult.OK)
             {
                 pen.Color = cd.Color;
             }
+        }
+        //Show instructions
+        private void Figure_cmbx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (Figure_cmbx.SelectedItem) 
+            {
+                case "Triangle":
+                    MessageBox.Show("To draw Triangle select 3 points");
+                    break;
+            }
+
         }
     }
 }
