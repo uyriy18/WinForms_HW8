@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Figure_cmbx = new System.Windows.Forms.ComboBox();
             this.ColorDialog_btn = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -39,7 +40,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.Canvas_panel = new System.Windows.Forms.Panel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.Figure_cmbx = new System.Windows.Forms.ComboBox();
+            this.Coordenates_lbl = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -64,6 +65,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(469, 26);
             this.panel1.TabIndex = 0;
+            // 
+            // Figure_cmbx
+            // 
+            this.Figure_cmbx.AutoCompleteCustomSource.AddRange(new string[] {
+            "Triangle"});
+            this.Figure_cmbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Figure_cmbx.ForeColor = System.Drawing.Color.White;
+            this.Figure_cmbx.FormattingEnabled = true;
+            this.Figure_cmbx.Items.AddRange(new object[] {
+            "Pen",
+            "Triangle",
+            "Rectangle"});
+            this.Figure_cmbx.Location = new System.Drawing.Point(341, -2);
+            this.Figure_cmbx.Name = "Figure_cmbx";
+            this.Figure_cmbx.Size = new System.Drawing.Size(121, 21);
+            this.Figure_cmbx.TabIndex = 3;
+            this.Figure_cmbx.SelectedIndexChanged += new System.EventHandler(this.Figure_cmbx_SelectedIndexChanged);
             // 
             // ColorDialog_btn
             // 
@@ -134,12 +152,14 @@
             // Canvas_panel
             // 
             this.Canvas_panel.BackColor = System.Drawing.Color.White;
+            this.Canvas_panel.Controls.Add(this.Coordenates_lbl);
             this.Canvas_panel.Controls.Add(this.panel1);
             this.Canvas_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Canvas_panel.Location = new System.Drawing.Point(0, 0);
             this.Canvas_panel.Name = "Canvas_panel";
-            this.Canvas_panel.Size = new System.Drawing.Size(484, 749);
+            this.Canvas_panel.Size = new System.Drawing.Size(484, 419);
             this.Canvas_panel.TabIndex = 1;
+            this.Canvas_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.Canvas_panel_Paint);
             this.Canvas_panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Canvas_panel_MouseDown);
             this.Canvas_panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Canvas_panel_MouseMove);
             this.Canvas_panel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Canvas_panel_MouseUp);
@@ -150,28 +170,20 @@
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "Triangle.png");
             // 
-            // Figure_cmbx
+            // Coordenates_lbl
             // 
-            this.Figure_cmbx.AutoCompleteCustomSource.AddRange(new string[] {
-            "Triangle"});
-            this.Figure_cmbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Figure_cmbx.ForeColor = System.Drawing.Color.White;
-            this.Figure_cmbx.FormattingEnabled = true;
-            this.Figure_cmbx.Items.AddRange(new object[] {
-            "Pen",
-            "Triangle"});
-            this.Figure_cmbx.Location = new System.Drawing.Point(341, -2);
-            this.Figure_cmbx.Name = "Figure_cmbx";
-            this.Figure_cmbx.Size = new System.Drawing.Size(121, 21);
-            this.Figure_cmbx.TabIndex = 3;
-            this.Figure_cmbx.SelectedIndexChanged += new System.EventHandler(this.Figure_cmbx_SelectedIndexChanged);
+            this.Coordenates_lbl.AutoSize = true;
+            this.Coordenates_lbl.Location = new System.Drawing.Point(3, 32);
+            this.Coordenates_lbl.Name = "Coordenates_lbl";
+            this.Coordenates_lbl.Size = new System.Drawing.Size(0, 13);
+            this.Coordenates_lbl.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(484, 749);
+            this.ClientSize = new System.Drawing.Size(484, 419);
             this.Controls.Add(this.Canvas_panel);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -182,6 +194,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.Canvas_panel.ResumeLayout(false);
+            this.Canvas_panel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -198,6 +211,7 @@
         private System.Windows.Forms.Panel Canvas_panel;
         private System.Windows.Forms.ComboBox Figure_cmbx;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Label Coordenates_lbl;
     }
 }
 

@@ -13,10 +13,12 @@ namespace Task2
     public partial class Form1 : Form
     {
         List<Point> pointCollection = new List<Point>();
+        Stack<Rectangle> rectangleCollection = new Stack<Rectangle>();
         Graphics g;
         Pen pen;
-        int pointX = -10;
-        int pointY = -10;
+        Point locationXY;
+        Point locationX1Y1;
+     
         bool isMoving = false;
             
         public Form1()  
@@ -40,15 +42,14 @@ namespace Task2
             if (e.Button == MouseButtons.Left)
             {
                 isMoving = true;
-                pointX = e.X;
-                pointY = e.Y;
+                locationXY = e.Location;
             }
             //if triangle was chosen
             if(Figure_cmbx.SelectedItem.ToString() == "Triangle")
             {
-                Point p = new Point(pointX, pointY);
+                Point p = locationXY;
                 pointCollection.Add(p);
-                Rectangle r = new Rectangle(pointX, pointY, 5, 5);
+                Rectangle r = new Rectangle(locationXY.X, locationXY.Y , 5, 5);
                 g.FillRectangle(new SolidBrush(pen.Color), r);
                 if(pointCollection.Count == 3)
                 {
@@ -62,24 +63,36 @@ namespace Task2
 
         private void Canvas_panel_MouseMove(object sender, MouseEventArgs e)
         {
-            //If combo box selected item name = "Pen"
-            if(Figure_cmbx.SelectedItem.ToString() == "Pen")
+            Coordenates_lbl.Text = $"pointX = {locationXY.X}, pointY = {locationXY.Y}, e.X = {locationX1Y1.X}, e.Y = {locationX1Y1.Y}";
+            if (isMoving)
             {
-                if (isMoving && pointX != -10 && pointY != -10)
+                locationX1Y1 = e.Location;
+
+                //If combo box selected item name = "Pen"
+                if (Figure_cmbx.SelectedItem.ToString() == "Pen")
                 {
-                    g.DrawLine(pen, new Point(pointX, pointY), e.Location);
-                    pointX = e.X;
-                    pointY = e.Y;
+                    g.DrawLine(pen, locationXY, e.Location);
+                    locationXY.X = e.X;
+                    locationXY.Y = e.Y;
+                }
+                else if (Figure_cmbx.SelectedItem.ToString() == "Rectangle")
+                {
+                    g.FillRectangle(new SolidBrush(pen.Color), locationXY.X, locationXY.Y, e.X - locationXY.X, e.Y - locationXY.Y);
+                                     
                 }
             }
-           
         }
 
         private void Canvas_panel_MouseUp(object sender, MouseEventArgs e)
         {
             isMoving = false;
-            pointX = -10;
-            pointY = -10;
+            locationX1Y1 = e.Location;
+            if (Figure_cmbx.SelectedItem.ToString() == "Rectangle")
+            {
+                g.FillRectangle(new SolidBrush(pen.Color), locationXY.X, locationXY.Y, e.X - locationXY.X, e.Y - locationXY.Y);
+
+            }
+
         }
         // Select color additional colors
         private void ColorDialog_btn_Click(object sender, EventArgs e)    
@@ -100,6 +113,27 @@ namespace Task2
                     break;
             }
 
+        }
+
+        private void addRectangle()
+        {
+            Rectangle rect = new Rectangle();
+            rect.X = Math.Min(locationXY.X, locationX1Y1.X);
+            rect.Y = Math.Min(locationXY.Y, locationX1Y1.Y);
+            rect.Height = Math.Abs(locationXY.X - locationX1Y1.X);
+            rect.Width = Math.Abs(locationXY.Y - locationX1Y1.Y);
+            rectangleCollection.Push(rect);
+            locationXY =new Point(0, 0);
+            locationX1Y1 = new Point(0, 0);
+
+        }
+
+        private void Canvas_panel_Paint(object sender, PaintEventArgs e)
+        {
+            if(rectangleCollection.Count > 0 && Figure_cmbx.SelectedItem.ToString() == "Rectangle")
+            {
+                g.DrawRectangle(pen, rectangleCollection.Pop());
+            }
         }
     }
 }
