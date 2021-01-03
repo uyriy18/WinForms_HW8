@@ -13,31 +13,61 @@ namespace Task2
     public partial class Form1 : Form
     {
         List<Point> pointCollection = new List<Point>();
+        Graphics g;
+        Pen pen;
+        int pointX = -10;
+        int pointY = -10;
+        bool isMoving = false;
             
         public Form1()  
         {
             InitializeComponent();
+            g = Canvas_panel.CreateGraphics();
+            pen = new Pen(Color.Black, 5);
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            pen.StartCap = pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
         }
 
-        void drawTriangle(object sender, MouseEventArgs e)
+        private void pictureBox5_Click(object sender, EventArgs e)
         {
-            Graphics g = Graphics.FromHwnd(this.Handle);
-            Pen redPen = new Pen(Color.Red);
-            Point p1 = new Point(e.X, e.Y);
-            Rectangle r = new Rectangle(p1.X, p1.Y, 5, 5);
-            g.FillEllipse(new SolidBrush(Color.Red), r);
-            pointCollection.Add(p1);
-            if(pointCollection.Count == 3)
-            {
-                g.DrawLine(redPen, pointCollection[0], pointCollection[1]);
-                g.DrawLine(redPen, pointCollection[1], pointCollection[2]);
-                g.DrawLine(redPen, pointCollection[2], pointCollection[0]);
-                pointCollection.Clear();
-            }
-
-
+            PictureBox p = (PictureBox)sender;
+            pen.Color = p.BackColor;
         }
 
-        
+        private void Canvas_panel_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isMoving = true;
+                pointX = e.X;
+                pointY = e.Y;
+            }
+        }
+
+        private void Canvas_panel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isMoving && pointX != -10 && pointY != -10)
+            {
+                g.DrawLine(pen, new Point(pointX, pointY), e.Location);
+                pointX = e.X;
+                pointY = e.Y;
+            }
+        }
+
+        private void Canvas_panel_MouseUp(object sender, MouseEventArgs e)
+        {
+            isMoving = false;
+            pointX = -10;
+            pointY = -10;
+        }
+
+        private void ColorDialog_btn_Click(object sender, EventArgs e)
+        {
+            ColorDialog cd = new ColorDialog();
+            if(cd.ShowDialog() == DialogResult.OK)
+            {
+                pen.Color = cd.Color;
+            }
+        }
     }
 }
