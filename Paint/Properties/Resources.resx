@@ -117,34 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="imageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="imageList1.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACm
-        BAAAAk1TRnQBSQFMAwEBAAEYAQABGAEAARgBAAEYAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABYAMA
-        ARgDAAEBAQABIAYAASQWAAMKAQ4DBAEFSAADBAEFAwoBDv8AJQADQwF4AwMB/AMhAe0DMQFPAx4BKwMe
-        ASsDHgErAx4BKwMeASsDHgErAx4BKwMeASsDHgErAx4BKwMeASsDHgErAx4BKwMeASsDHgErAx4BKwMx
-        AU8DIQHtAwMB/ANDAXj/ACEAAxIB9wMAAf4DAAH+AwAB/wMAAf4DAAH+AwAB/wMAAf4DAAH+AwAB/wMA
-        Af4DAAH/AwAB/gMAAf4DAAH+AwAB/wMAAf4DAAH+AwAB/wMAAf4DAAH+AwAB/wMAAf4DEgH3/wAhAAM9
-        AdYDAAH/AwAB/wM3AdwDTAGzA0wBswNMAbMDTAGzA0wBswNMAbMDTAGzA0wBswNMAbMDTAGzA0wBswNM
-        AbMDTAGzA0wBswNMAbMDTAGzAzcB3AMAAf8DAAH/Az0B1v8AIQADGgEkA0oBmAMAAf4DMwHgAwcBCTgA
-        AwcBCQMzAeADAAH+A0oBmAMaAST/ACkAA0oBpAMAAf8DRAF+OAADRAF+AwAB/gNKAaT/ADEAAxQBHAMY
-        AfMDFQH0AxUBHTAAAxUBHQMVAfQDGAHzAxQBHP8ANQADQwF8AwAB/gNMAacwAANMAacDAAH+A0MBfP8A
-        OQADBgEIAzQB3gMAAf4DKAE8KAADKAE8AwAB/gM0Ad4DBgEI/wA9AAM0AVQDAAH/A0MBzQMBAQIgAAMB
-        AQIDQwHNAwAB/wM0AVT/AEUAA0kBvwMAAf8DOwFkIAADOwFkAwAB/gNJAb//AEkAAyABLgMDAfwDKAHo
-        AwoBDhgAAwoBDgMoAegDAwH8AyABLv8ATQADSgGXAwAB/gNIAYwYAANIAYwDAAH+A0oBl/8AUQADDwEU
-        AyAB7gMMAfkDGwEmEAADGwEmAwwB+QMgAe4DDwEU/wBVAAM/AW8DAAH+A0oBtBAAA0oBtAMAAf8DPwFv
-        /wBZAAMDAQQDPQHVAwAB/wMvAUoIAAMvAUoDAAH/Az0B1QMDAQT/AF0AAy0BRgMAAf8DPQHXAwQBBQME
-        AQUDPQHXAwAB/gMtAUb/AGUAA0sBsgMAAf4DQQFyA0EBcgMAAf4DSwGy/wBpAAMaASQDDwH4Ax4B7wMe
-        Ae8DDwH4AxoBJP8AbQADSQG8AwAB/wMAAf4DSQG8/wBxAAM+AdQDAAH/AwAB/gM+AdT/AHEAAzsBZAMD
-        AfwDAwH8AzsBZP8AdQADEQEXAxEBF/8A/wDOAAFCAU0BPgcAAT4DAAEoAwABYAMAARgDAAEBAQABAQUA
-        ASABARYAA/8BAAGfAf8B+S0AAQcB/wHgCQABxwH/AeMJAAHDAf8BwwkAAeMB/wHHCQAB4QH/AYcJAAHw
-        Af8BDwkAAfgB/wEfCQAB+AF+AR8JAAH8AX4BPwkAAfwBPAE/CQAB/gE8AX8JAAH+ARgBfwkAAf8BAAH/
-        CQAB/wGBAf8JAAH/AYEB/wkAAf8BwwH/CQAB/wHDAf8JAAH/AcMB/wkAAf8B5wH/CQAD/wkACw==
-</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="pen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Triangle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Triangle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rectangle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Rectangle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ellipse " type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Images\Ellipse .png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
