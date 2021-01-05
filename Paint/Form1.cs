@@ -221,5 +221,15 @@ namespace Paint
             ellipse_pcbx.BorderStyle = BorderStyle.None;
             line_pcbx.BorderStyle = BorderStyle.Fixed3D;
         }
+
+        private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("program was developed by IT-step academy student Bartash Yriy", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

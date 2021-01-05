@@ -173,7 +173,7 @@ namespace WinForms_HW8
                 }
                else if(e.Location.X > 35 && e.Location.X < 430 && e.Location.Y > 325 && e.Location.Y < 380)
                 {
-                    MessageBox.Show("Wight pawn");
+                    MessageBox.Show("White pawn");
                 }
                else if(e.Location.X > 35 && e.Location.X < 85 && e.Location.Y > 35 && e.Location.Y < 84 || e.Location.X > 380 && e.Location.X < 430 && e.Location.Y > 35 && e.Location.Y < 84)
                 {
@@ -181,7 +181,7 @@ namespace WinForms_HW8
                 }
                 else if (e.Location.X > 35 && e.Location.X < 85 && e.Location.Y > 385 && e.Location.Y < 434 || e.Location.X > 380 && e.Location.X < 430 && e.Location.Y > 385 && e.Location.Y < 434)
                 {
-                    MessageBox.Show("Wight rook");
+                    MessageBox.Show("White rook");
                 }
                else if(e.Location.X > 86 && e.Location.X < 134 && e.Location.Y > 35 && e.Location.Y < 84 || e.Location.X > 331 && e.Location.X < 379 && e.Location.Y > 35 && e.Location.Y < 84)
                 {
@@ -189,7 +189,7 @@ namespace WinForms_HW8
                 }
                 else if (e.Location.X > 86 && e.Location.X < 134 && e.Location.Y > 385 && e.Location.Y < 434 || e.Location.X > 331 && e.Location.X < 379 && e.Location.Y > 385 && e.Location.Y < 434)
                 {
-                    MessageBox.Show("Wight knight");
+                    MessageBox.Show("White knight");
                 }
                 else if (e.Location.X > 140 && e.Location.X < 170 && e.Location.Y > 35 && e.Location.Y < 84 || e.Location.X > 285 && e.Location.X < 315 && e.Location.Y > 35 && e.Location.Y < 84)
                 {
@@ -197,7 +197,7 @@ namespace WinForms_HW8
                 }
                 else if (e.Location.X > 140 && e.Location.X < 170 && e.Location.Y > 385 && e.Location.Y < 434 || e.Location.X > 255 && e.Location.X < 315 && e.Location.Y > 385 && e.Location.Y < 434)
                 {
-                    MessageBox.Show("Wight elephant");
+                    MessageBox.Show("White elephant");
                 }
                 else if (e.Location.X > 190 && e.Location.X < 220 && e.Location.Y > 35 && e.Location.Y < 84)
                     {
@@ -205,7 +205,7 @@ namespace WinForms_HW8
                     }
                 else if (e.Location.X > 190 && e.Location.X < 220 && e.Location.Y > 385 && e.Location.Y < 434)
                 {
-                    MessageBox.Show("Wight queen");
+                    MessageBox.Show("White queen");
                 }
                 else if (e.Location.X > 240 && e.Location.X < 270 && e.Location.Y > 35 && e.Location.Y < 84)
                 {
@@ -213,7 +213,7 @@ namespace WinForms_HW8
                 }
                 else if (e.Location.X > 240 && e.Location.X < 270 && e.Location.Y > 385 && e.Location.Y < 434)
                 {
-                    MessageBox.Show("Wight king");
+                    MessageBox.Show("White king");
                 }
             }
         }
