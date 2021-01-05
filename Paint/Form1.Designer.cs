@@ -29,20 +29,21 @@
         private void InitializeComponent()
         {
             this.menu_panel = new System.Windows.Forms.Panel();
+            this.MOde_Panel = new System.Windows.Forms.Panel();
+            this.width_lbl = new System.Windows.Forms.Label();
+            this.width_trBar = new System.Windows.Forms.TrackBar();
+            this.Color_panel = new System.Windows.Forms.Panel();
+            this.Color_btn = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Color_panel = new System.Windows.Forms.Panel();
-            this.Color_btn = new System.Windows.Forms.Button();
-            this.width_trBar = new System.Windows.Forms.TrackBar();
-            this.width_lbl = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.MOde_Panel = new System.Windows.Forms.Panel();
             this.Layer0_pcbx = new System.Windows.Forms.PictureBox();
+            this.line_pcbx = new System.Windows.Forms.PictureBox();
             this.ellipse_pcbx = new System.Windows.Forms.PictureBox();
             this.rectangle_pcbx = new System.Windows.Forms.PictureBox();
             this.triangle_pcbx = new System.Windows.Forms.PictureBox();
@@ -54,11 +55,12 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menu_panel.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
-            this.Color_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.width_trBar)).BeginInit();
             this.MOde_Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.width_trBar)).BeginInit();
+            this.Color_panel.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Layer0_pcbx)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.line_pcbx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ellipse_pcbx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rectangle_pcbx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.triangle_pcbx)).BeginInit();
@@ -84,6 +86,62 @@
             this.menu_panel.Name = "menu_panel";
             this.menu_panel.Size = new System.Drawing.Size(800, 100);
             this.menu_panel.TabIndex = 0;
+            // 
+            // MOde_Panel
+            // 
+            this.MOde_Panel.Controls.Add(this.line_pcbx);
+            this.MOde_Panel.Controls.Add(this.ellipse_pcbx);
+            this.MOde_Panel.Controls.Add(this.rectangle_pcbx);
+            this.MOde_Panel.Controls.Add(this.triangle_pcbx);
+            this.MOde_Panel.Controls.Add(this.pen_pcbx);
+            this.MOde_Panel.Location = new System.Drawing.Point(4, 62);
+            this.MOde_Panel.Name = "MOde_Panel";
+            this.MOde_Panel.Size = new System.Drawing.Size(320, 32);
+            this.MOde_Panel.TabIndex = 5;
+            // 
+            // width_lbl
+            // 
+            this.width_lbl.AutoSize = true;
+            this.width_lbl.Location = new System.Drawing.Point(559, 31);
+            this.width_lbl.Name = "width_lbl";
+            this.width_lbl.Size = new System.Drawing.Size(0, 13);
+            this.width_lbl.TabIndex = 4;
+            // 
+            // width_trBar
+            // 
+            this.width_trBar.Location = new System.Drawing.Point(449, 27);
+            this.width_trBar.Maximum = 100;
+            this.width_trBar.Minimum = 1;
+            this.width_trBar.Name = "width_trBar";
+            this.width_trBar.Size = new System.Drawing.Size(104, 45);
+            this.width_trBar.TabIndex = 3;
+            this.width_trBar.Value = 5;
+            this.width_trBar.Scroll += new System.EventHandler(this.width_trBar_Scroll);
+            // 
+            // Color_panel
+            // 
+            this.Color_panel.Controls.Add(this.Color_btn);
+            this.Color_panel.Controls.Add(this.pictureBox5);
+            this.Color_panel.Controls.Add(this.pictureBox4);
+            this.Color_panel.Controls.Add(this.pictureBox3);
+            this.Color_panel.Controls.Add(this.pictureBox2);
+            this.Color_panel.Controls.Add(this.pictureBox1);
+            this.Color_panel.Location = new System.Drawing.Point(4, 28);
+            this.Color_panel.Name = "Color_panel";
+            this.Color_panel.Size = new System.Drawing.Size(320, 27);
+            this.Color_panel.TabIndex = 1;
+            // 
+            // Color_btn
+            // 
+            this.Color_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Color_btn.ForeColor = System.Drawing.Color.White;
+            this.Color_btn.Location = new System.Drawing.Point(242, -1);
+            this.Color_btn.Name = "Color_btn";
+            this.Color_btn.Size = new System.Drawing.Size(75, 28);
+            this.Color_btn.TabIndex = 3;
+            this.Color_btn.Text = "More ...";
+            this.Color_btn.UseVisualStyleBackColor = false;
+            this.Color_btn.Click += new System.EventHandler(this.Color_btn_Click);
             // 
             // menuStrip1
             // 
@@ -132,64 +190,9 @@
             this.infoToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.infoToolStripMenuItem.Text = "Info";
             // 
-            // Color_panel
-            // 
-            this.Color_panel.Controls.Add(this.Color_btn);
-            this.Color_panel.Controls.Add(this.pictureBox5);
-            this.Color_panel.Controls.Add(this.pictureBox4);
-            this.Color_panel.Controls.Add(this.pictureBox3);
-            this.Color_panel.Controls.Add(this.pictureBox2);
-            this.Color_panel.Controls.Add(this.pictureBox1);
-            this.Color_panel.Location = new System.Drawing.Point(4, 28);
-            this.Color_panel.Name = "Color_panel";
-            this.Color_panel.Size = new System.Drawing.Size(320, 27);
-            this.Color_panel.TabIndex = 1;
-            // 
-            // Color_btn
-            // 
-            this.Color_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Color_btn.ForeColor = System.Drawing.Color.White;
-            this.Color_btn.Location = new System.Drawing.Point(242, -1);
-            this.Color_btn.Name = "Color_btn";
-            this.Color_btn.Size = new System.Drawing.Size(75, 28);
-            this.Color_btn.TabIndex = 3;
-            this.Color_btn.Text = "More ...";
-            this.Color_btn.UseVisualStyleBackColor = false;
-            this.Color_btn.Click += new System.EventHandler(this.Color_btn_Click);
-            // 
-            // width_trBar
-            // 
-            this.width_trBar.Location = new System.Drawing.Point(449, 27);
-            this.width_trBar.Maximum = 100;
-            this.width_trBar.Minimum = 1;
-            this.width_trBar.Name = "width_trBar";
-            this.width_trBar.Size = new System.Drawing.Size(104, 45);
-            this.width_trBar.TabIndex = 3;
-            this.width_trBar.Value = 5;
-            this.width_trBar.Scroll += new System.EventHandler(this.width_trBar_Scroll);
-            // 
-            // width_lbl
-            // 
-            this.width_lbl.AutoSize = true;
-            this.width_lbl.Location = new System.Drawing.Point(559, 31);
-            this.width_lbl.Name = "width_lbl";
-            this.width_lbl.Size = new System.Drawing.Size(0, 13);
-            this.width_lbl.TabIndex = 4;
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // MOde_Panel
-            // 
-            this.MOde_Panel.Controls.Add(this.ellipse_pcbx);
-            this.MOde_Panel.Controls.Add(this.rectangle_pcbx);
-            this.MOde_Panel.Controls.Add(this.triangle_pcbx);
-            this.MOde_Panel.Controls.Add(this.pen_pcbx);
-            this.MOde_Panel.Location = new System.Drawing.Point(4, 62);
-            this.MOde_Panel.Name = "MOde_Panel";
-            this.MOde_Panel.Size = new System.Drawing.Size(320, 32);
-            this.MOde_Panel.TabIndex = 5;
             // 
             // Layer0_pcbx
             // 
@@ -204,42 +207,58 @@
             this.Layer0_pcbx.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Layer0_pcbx_MouseMove);
             this.Layer0_pcbx.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Layer0_pcbx_MouseUp);
             // 
+            // line_pcbx
+            // 
+            this.line_pcbx.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.line_pcbx.Image = global::Paint.Properties.Resources.Line;
+            this.line_pcbx.Location = new System.Drawing.Point(140, 3);
+            this.line_pcbx.Name = "line_pcbx";
+            this.line_pcbx.Size = new System.Drawing.Size(28, 28);
+            this.line_pcbx.TabIndex = 4;
+            this.line_pcbx.TabStop = false;
+            this.line_pcbx.Click += new System.EventHandler(this.line_pcbx_Click);
+            // 
             // ellipse_pcbx
             // 
+            this.ellipse_pcbx.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ellipse_pcbx.Image = global::Paint.Properties.Resources.Ellipse_;
             this.ellipse_pcbx.Location = new System.Drawing.Point(106, 3);
             this.ellipse_pcbx.Name = "ellipse_pcbx";
-            this.ellipse_pcbx.Size = new System.Drawing.Size(26, 26);
+            this.ellipse_pcbx.Size = new System.Drawing.Size(28, 28);
             this.ellipse_pcbx.TabIndex = 3;
             this.ellipse_pcbx.TabStop = false;
             this.ellipse_pcbx.Click += new System.EventHandler(this.elipse_pcbx_Click);
             // 
             // rectangle_pcbx
             // 
+            this.rectangle_pcbx.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.rectangle_pcbx.Image = global::Paint.Properties.Resources.Rectangle;
             this.rectangle_pcbx.Location = new System.Drawing.Point(72, 3);
             this.rectangle_pcbx.Name = "rectangle_pcbx";
-            this.rectangle_pcbx.Size = new System.Drawing.Size(26, 26);
+            this.rectangle_pcbx.Size = new System.Drawing.Size(28, 28);
             this.rectangle_pcbx.TabIndex = 2;
             this.rectangle_pcbx.TabStop = false;
             this.rectangle_pcbx.Click += new System.EventHandler(this.rectangle_pcbx_Click);
             // 
             // triangle_pcbx
             // 
+            this.triangle_pcbx.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.triangle_pcbx.Image = global::Paint.Properties.Resources.Triangle;
             this.triangle_pcbx.Location = new System.Drawing.Point(40, 3);
             this.triangle_pcbx.Name = "triangle_pcbx";
-            this.triangle_pcbx.Size = new System.Drawing.Size(26, 26);
+            this.triangle_pcbx.Size = new System.Drawing.Size(28, 28);
             this.triangle_pcbx.TabIndex = 1;
             this.triangle_pcbx.TabStop = false;
             this.triangle_pcbx.Click += new System.EventHandler(this.triangle_pcbx_Click);
             // 
             // pen_pcbx
             // 
+            this.pen_pcbx.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pen_pcbx.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pen_pcbx.Image = global::Paint.Properties.Resources.pen;
             this.pen_pcbx.Location = new System.Drawing.Point(8, 3);
             this.pen_pcbx.Name = "pen_pcbx";
-            this.pen_pcbx.Size = new System.Drawing.Size(26, 26);
+            this.pen_pcbx.Size = new System.Drawing.Size(28, 28);
             this.pen_pcbx.TabIndex = 0;
             this.pen_pcbx.TabStop = false;
             this.pen_pcbx.Click += new System.EventHandler(this.pen_pcbx_Click);
@@ -319,12 +338,13 @@
             this.Text = "Form1";
             this.menu_panel.ResumeLayout(false);
             this.menu_panel.PerformLayout();
+            this.MOde_Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.width_trBar)).EndInit();
+            this.Color_panel.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.Color_panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.width_trBar)).EndInit();
-            this.MOde_Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Layer0_pcbx)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.line_pcbx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ellipse_pcbx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rectangle_pcbx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.triangle_pcbx)).EndInit();
@@ -366,6 +386,7 @@
         private System.Windows.Forms.PictureBox Layer0_pcbx;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.PictureBox line_pcbx;
     }
 }
 
