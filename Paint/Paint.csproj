@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FloodFill.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +95,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\Images\Line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bg-Color-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

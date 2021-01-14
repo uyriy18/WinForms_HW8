@@ -12,17 +12,18 @@ namespace Paint
 {
     public partial class Form1 : Form
     {
-        int X0;                    //mouse down X coordinate
-        int Y0;                    //mouse down Y coordinate
-        int X;                     //mouse moving X coordinate
-        int Y;                     //mouse moving Y coordinate
-        Bitmap mainPic;                //Canvas for drawing
-        Bitmap tmpPic;             //Temporary layer for drawing
-        Color color;               //Chosen color (default - black)
-        int width;                 //Width of our pen and brush
-        string paintMode = "pen";  //Drawing mode, denpends on what we want to draw (rectangle, triangle, lines, pen , brush)
-        bool isMoving;             //when mouse down isMoving = true, when mouse up isMoving = false
+        int X0;                      //mouse down X coordinate
+        int Y0;                      //mouse down Y coordinate
+        int X;                       //mouse moving X coordinate
+        int Y;                       //mouse moving Y coordinate
+        Bitmap mainPic;              //Canvas for drawing
+        Bitmap tmpPic;               //Temporary layer for drawing
+        Color color;                 //Chosen color (default - black)
+        int width;                   //Width of our pen and brush
+        string paintMode = "pen";    //Drawing mode, denpends on what we want to draw (rectangle, triangle, lines, pen , brush)
+        bool isMoving;               //when mouse down isMoving = true, when mouse up isMoving = false
         Pen pen;
+        TextBox textBox;             //For text inserting
         List<Point> pointCollection; //point list for triangle drawing
         public Form1()
         {
@@ -64,6 +65,15 @@ namespace Paint
                             g.DrawLine(pen, pointCollection[2], pointCollection[0]);
                             pointCollection.Clear();
                         }
+                        Layer0_pcbx.Image = mainPic;
+                        break;
+                    case "text":
+                        textBox = new TextBox();
+                        textBox.Location = new Point(e.X, e.Y);
+                        this.Controls.Add(textBox);
+                        break;
+                    case "fill":
+                        FloodFill(mainPic, e.Location, new Color(), color);
                         Layer0_pcbx.Image = mainPic;
                         break;
                 }
@@ -123,6 +133,9 @@ namespace Paint
                 case "line":
                     g.DrawLine(pen, X0, Y0, X, Y);
                     break;
+                case "text":
+                   
+                    break;
 
             }
 
@@ -180,6 +193,8 @@ namespace Paint
             rectangle_pcbx.BorderStyle = BorderStyle.None;
             ellipse_pcbx.BorderStyle = BorderStyle.None;
             line_pcbx.BorderStyle = BorderStyle.None;
+            text_pcbx.BorderStyle = BorderStyle.None;
+            fill_pcbx.BorderStyle = BorderStyle.None;
         }
 
         private void triangle_pcbx_Click(object sender, EventArgs e)
@@ -190,6 +205,8 @@ namespace Paint
             rectangle_pcbx.BorderStyle = BorderStyle.None;
             ellipse_pcbx.BorderStyle = BorderStyle.None;
             line_pcbx.BorderStyle = BorderStyle.None;
+            text_pcbx.BorderStyle = BorderStyle.None;
+            fill_pcbx.BorderStyle = BorderStyle.None;
         }
 
         private void rectangle_pcbx_Click(object sender, EventArgs e)
@@ -200,6 +217,8 @@ namespace Paint
             rectangle_pcbx.BorderStyle = BorderStyle.Fixed3D;
             ellipse_pcbx.BorderStyle = BorderStyle.None;
             line_pcbx.BorderStyle = BorderStyle.None;
+            text_pcbx.BorderStyle = BorderStyle.None;
+            fill_pcbx.BorderStyle = BorderStyle.None;
         }
 
         private void elipse_pcbx_Click(object sender, EventArgs e)
@@ -210,6 +229,8 @@ namespace Paint
             rectangle_pcbx.BorderStyle = BorderStyle.None;
             ellipse_pcbx.BorderStyle = BorderStyle.Fixed3D;
             line_pcbx.BorderStyle = BorderStyle.None;
+            text_pcbx.BorderStyle = BorderStyle.None;
+            fill_pcbx.BorderStyle = BorderStyle.None;
         }
 
         private void line_pcbx_Click(object sender, EventArgs e)
@@ -220,6 +241,31 @@ namespace Paint
             rectangle_pcbx.BorderStyle = BorderStyle.None;
             ellipse_pcbx.BorderStyle = BorderStyle.None;
             line_pcbx.BorderStyle = BorderStyle.Fixed3D;
+            text_pcbx.BorderStyle = BorderStyle.None;
+            fill_pcbx.BorderStyle = BorderStyle.None;
+        }
+        private void text_pcbx_Click(object sender, EventArgs e)
+        {
+            paintMode = "text";
+            pen_pcbx.BorderStyle = BorderStyle.None;
+            triangle_pcbx.BorderStyle = BorderStyle.None;
+            rectangle_pcbx.BorderStyle = BorderStyle.None;
+            ellipse_pcbx.BorderStyle = BorderStyle.None;
+            line_pcbx.BorderStyle = BorderStyle.None;
+            text_pcbx.BorderStyle = BorderStyle.Fixed3D;
+            fill_pcbx.BorderStyle = BorderStyle.None;
+        }
+
+        private void fill_pcbx_Click(object sender, EventArgs e)
+        {
+            paintMode = "fill";
+            pen_pcbx.BorderStyle = BorderStyle.None;
+            triangle_pcbx.BorderStyle = BorderStyle.None;
+            rectangle_pcbx.BorderStyle = BorderStyle.None;
+            ellipse_pcbx.BorderStyle = BorderStyle.None;
+            line_pcbx.BorderStyle = BorderStyle.None;
+            text_pcbx.BorderStyle = BorderStyle.None;
+            fill_pcbx.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
@@ -230,6 +276,61 @@ namespace Paint
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        
+
+
+        private void FloodFill(Bitmap bmp, Point pt, Color targetColor, Color replacementColor)
+        {
+            targetColor = bmp.GetPixel(pt.X, pt.Y);
+            if (targetColor.ToArgb().Equals(replacementColor.ToArgb()))
+            {
+                return;
+            }
+
+            Stack<Point> pixels = new Stack<Point>();
+
+            pixels.Push(pt);
+            while (pixels.Count != 0)
+            {
+                Point temp = pixels.Pop();
+                int y1 = temp.Y;
+                while (y1 >= 0 && bmp.GetPixel(temp.X, y1) == targetColor)
+                {
+                    y1--;
+                }
+                y1++;
+                bool spanLeft = false;
+                bool spanRight = false;
+                while (y1 < bmp.Height && bmp.GetPixel(temp.X, y1) == targetColor)
+                {
+                    bmp.SetPixel(temp.X, y1, replacementColor);
+
+                    if (!spanLeft && temp.X > 0 && bmp.GetPixel(temp.X - 1, y1) == targetColor)
+                    {
+                        pixels.Push(new Point(temp.X - 1, y1));
+                        spanLeft = true;
+                    }
+                    else if (spanLeft && temp.X - 1 == 0 && bmp.GetPixel(temp.X - 1, y1) != targetColor)
+                    {
+                        spanLeft = false;
+                    }
+                    if (!spanRight && temp.X < bmp.Width - 1 && bmp.GetPixel(temp.X + 1, y1) == targetColor)
+                    {
+                        pixels.Push(new Point(temp.X + 1, y1));
+                        spanRight = true;
+                    }
+                    else if (spanRight && temp.X < bmp.Width - 1 && bmp.GetPixel(temp.X + 1, y1) != targetColor)
+                    {
+                        spanRight = false;
+                    }
+                    y1++;
+                }
+
+            }
+            pictureBox1.Refresh();
+
         }
     }
 }

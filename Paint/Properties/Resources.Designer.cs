@@ -63,6 +63,16 @@ namespace Paint.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Bg_Color_icon {
+            get {
+                object obj = ResourceManager.GetObject("Bg-Color-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Ellipse_ {
             get {
                 object obj = ResourceManager.GetObject("Ellipse ", resourceCulture);
@@ -96,6 +106,16 @@ namespace Paint.Properties {
         internal static System.Drawing.Bitmap Rectangle {
             get {
                 object obj = ResourceManager.GetObject("Rectangle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Text {
+            get {
+                object obj = ResourceManager.GetObject("Text", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
