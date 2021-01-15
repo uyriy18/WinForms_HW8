@@ -25,6 +25,7 @@ namespace Paint
         Pen pen;
         TextBox textBox;             //For text inserting
         List<Point> pointCollection; //point list for triangle drawing
+        string message;
         public Form1()
         {
             InitializeComponent();
@@ -68,12 +69,21 @@ namespace Paint
                         Layer0_pcbx.Image = mainPic;
                         break;
                     case "text":
-                        textBox = new TextBox();
-                        textBox.Location = new Point(e.X, e.Y);
-                        this.Controls.Add(textBox);
+                        PictureBox picBoxToText = new PictureBox();
+                        picBoxToText.Location = new Point(e.X, e.Y - 30);
+                        picBoxToText.Name = message;
+                        picBoxToText.Size = new Size(100, 30);
+                        this.Controls.Add(picBoxToText);
+                        picBoxToText.BringToFront();
+
+                        Bitmap b = new Bitmap(picBoxToText.ClientRectangle.Width, picBoxToText.ClientRectangle.Height);
+                        Graphics g3 = Graphics.FromImage(b);
+                        Font myfont = new Font("Calibri", 12);
+                        g3.DrawString(message, myfont, Brushes.Black, new Point(e.X, e.Y - 30));
+                        picBoxToText.Image = b;
                         break;
                     case "fill":
-                        FloodFill(mainPic, e.Location, new Color(), color);
+                        FloodFill(mainPic, e.Location, color);
                         Layer0_pcbx.Image = mainPic;
                         break;
                 }
@@ -100,19 +110,24 @@ namespace Paint
                     case "rectangle":
                         g1.Clear(Color.White);                            // drop previous temp rectangle. We will set on main layer only last rectangle after mouseUp event
                         g1.DrawRectangle(pen, X0, Y0, X - X0, Y - Y0);    // draw new temp rectangle
+                        g1.DrawImage(mainPic, 0, 0);                              // transport main picture on temp layer
+                        Layer0_pcbx.Image = tmpPic;                               // transport full composition on main layer
                         break;
                     case "ellipse":                                       // as rectangle
                         g1.Clear(Color.White);
                         g1.DrawEllipse(pen, X0, Y0, X - X0, Y - Y0);
+                        g1.DrawImage(mainPic, 0, 0);                              // transport main picture on temp layer
+                        Layer0_pcbx.Image = tmpPic;                               // transport full composition on main layer
                         break;
                     case "line":
                         g1.Clear(Color.White);
                         g1.DrawLine(pen, X0, Y0, X, Y);
+                        g1.DrawImage(mainPic, 0, 0);                              // transport main picture on temp layer
+                        Layer0_pcbx.Image = tmpPic;                               // transport full composition on main layer
                         break;
                 }
                 
-                g1.DrawImage(mainPic, 0, 0);                              // transport main picture on temp layer
-                Layer0_pcbx.Image = tmpPic;                               // transport full composition on main layer
+               
             }
         }
 
@@ -126,12 +141,15 @@ namespace Paint
             {
                 case "rectangle":
                     g.DrawRectangle(pen, X0, Y0, X - X0, Y - Y0);        // Draw rectangle on main canvas
+                    Layer0_pcbx.Image = mainPic;
                     break;
                 case "ellipse":                                          // as recangle
                     g.DrawEllipse(pen, X0, Y0, X - X0, Y - Y0);
+                    Layer0_pcbx.Image = mainPic;
                     break;
                 case "line":
                     g.DrawLine(pen, X0, Y0, X, Y);
+                    Layer0_pcbx.Image = mainPic;
                     break;
                 case "text":
                    
@@ -281,9 +299,9 @@ namespace Paint
         
 
 
-        private void FloodFill(Bitmap bmp, Point pt, Color targetColor, Color replacementColor)
+        private void FloodFill(Bitmap bmp, Point pt, Color replacementColor)
         {
-            targetColor = bmp.GetPixel(pt.X, pt.Y);
+            Color targetColor = bmp.GetPixel(pt.X, pt.Y);
             if (targetColor.ToArgb().Equals(replacementColor.ToArgb()))
             {
                 return;
