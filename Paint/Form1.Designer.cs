@@ -32,21 +32,6 @@
             this.fontStyle_cmbx = new System.Windows.Forms.ComboBox();
             this.fontHeight_cmbx = new System.Windows.Forms.ComboBox();
             this.MOde_Panel = new System.Windows.Forms.Panel();
-            this.width_lbl = new System.Windows.Forms.Label();
-            this.width_trBar = new System.Windows.Forms.TrackBar();
-            this.Color_panel = new System.Windows.Forms.Panel();
-            this.Color_btn = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Layer0_pcbx = new System.Windows.Forms.PictureBox();
             this.eraser_pxbx = new System.Windows.Forms.PictureBox();
             this.pipete_pcbx = new System.Windows.Forms.PictureBox();
             this.fill_pcbx = new System.Windows.Forms.PictureBox();
@@ -56,18 +41,29 @@
             this.rectangle_pcbx = new System.Windows.Forms.PictureBox();
             this.triangle_pcbx = new System.Windows.Forms.PictureBox();
             this.pen_pcbx = new System.Windows.Forms.PictureBox();
+            this.width_lbl = new System.Windows.Forms.Label();
+            this.width_trBar = new System.Windows.Forms.TrackBar();
             this.currentColor_pcbx = new System.Windows.Forms.PictureBox();
+            this.Color_panel = new System.Windows.Forms.Panel();
+            this.Color_btn = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.Layer0_pcbx = new System.Windows.Forms.PictureBox();
             this.menu_panel.SuspendLayout();
             this.MOde_Panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.width_trBar)).BeginInit();
-            this.Color_panel.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Layer0_pcbx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eraser_pxbx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipete_pcbx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fill_pcbx)).BeginInit();
@@ -77,12 +73,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.rectangle_pcbx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.triangle_pcbx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pen_pcbx)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.width_trBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentColor_pcbx)).BeginInit();
+            this.Color_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Layer0_pcbx)).BeginInit();
             this.SuspendLayout();
             // 
             // menu_panel
@@ -134,133 +134,6 @@
             this.MOde_Panel.Name = "MOde_Panel";
             this.MOde_Panel.Size = new System.Drawing.Size(320, 32);
             this.MOde_Panel.TabIndex = 5;
-            // 
-            // width_lbl
-            // 
-            this.width_lbl.AutoSize = true;
-            this.width_lbl.Location = new System.Drawing.Point(559, 31);
-            this.width_lbl.Name = "width_lbl";
-            this.width_lbl.Size = new System.Drawing.Size(0, 13);
-            this.width_lbl.TabIndex = 4;
-            // 
-            // width_trBar
-            // 
-            this.width_trBar.Location = new System.Drawing.Point(449, 27);
-            this.width_trBar.Maximum = 100;
-            this.width_trBar.Minimum = 1;
-            this.width_trBar.Name = "width_trBar";
-            this.width_trBar.Size = new System.Drawing.Size(104, 45);
-            this.width_trBar.TabIndex = 3;
-            this.width_trBar.Value = 5;
-            this.width_trBar.Scroll += new System.EventHandler(this.width_trBar_Scroll);
-            // 
-            // Color_panel
-            // 
-            this.Color_panel.Controls.Add(this.Color_btn);
-            this.Color_panel.Controls.Add(this.pictureBox5);
-            this.Color_panel.Controls.Add(this.pictureBox4);
-            this.Color_panel.Controls.Add(this.pictureBox3);
-            this.Color_panel.Controls.Add(this.pictureBox2);
-            this.Color_panel.Controls.Add(this.pictureBox1);
-            this.Color_panel.Location = new System.Drawing.Point(4, 28);
-            this.Color_panel.Name = "Color_panel";
-            this.Color_panel.Size = new System.Drawing.Size(320, 27);
-            this.Color_panel.TabIndex = 1;
-            // 
-            // Color_btn
-            // 
-            this.Color_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.Color_btn.ForeColor = System.Drawing.Color.White;
-            this.Color_btn.Location = new System.Drawing.Point(242, -1);
-            this.Color_btn.Name = "Color_btn";
-            this.Color_btn.Size = new System.Drawing.Size(75, 28);
-            this.Color_btn.TabIndex = 3;
-            this.Color_btn.Text = "More ...";
-            this.Color_btn.UseVisualStyleBackColor = false;
-            this.Color_btn.Click += new System.EventHandler(this.Color_btn_Click);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.infoToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clearToolStripMenuItem,
-            this.openToolStripMenuItem,
-            this.saveToolStripMenuItem,
-            this.closeToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.openToolStripMenuItem.Text = "Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
-            // 
-            // closeToolStripMenuItem
-            // 
-            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.closeToolStripMenuItem.Text = "Close";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
-            // 
-            // infoToolStripMenuItem
-            // 
-            this.infoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutProgramToolStripMenuItem});
-            this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
-            this.infoToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
-            this.infoToolStripMenuItem.Text = "Info";
-            // 
-            // aboutProgramToolStripMenuItem
-            // 
-            this.aboutProgramToolStripMenuItem.Name = "aboutProgramToolStripMenuItem";
-            this.aboutProgramToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.aboutProgramToolStripMenuItem.Text = "About program";
-            this.aboutProgramToolStripMenuItem.Click += new System.EventHandler(this.aboutProgramToolStripMenuItem_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // clearToolStripMenuItem
-            // 
-            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.clearToolStripMenuItem.Text = "Clear";
-            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
-            // 
-            // Layer0_pcbx
-            // 
-            this.Layer0_pcbx.BackColor = System.Drawing.Color.White;
-            this.Layer0_pcbx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Layer0_pcbx.Location = new System.Drawing.Point(0, 100);
-            this.Layer0_pcbx.Name = "Layer0_pcbx";
-            this.Layer0_pcbx.Size = new System.Drawing.Size(800, 350);
-            this.Layer0_pcbx.TabIndex = 1;
-            this.Layer0_pcbx.TabStop = false;
-            this.Layer0_pcbx.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Layer0_pcbx_MouseClick);
-            this.Layer0_pcbx.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Layer0_pcbx_MouseDown);
-            this.Layer0_pcbx.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Layer0_pcbx_MouseMove);
-            this.Layer0_pcbx.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Layer0_pcbx_MouseUp);
             // 
             // eraser_pxbx
             // 
@@ -362,6 +235,25 @@
             this.pen_pcbx.TabStop = false;
             this.pen_pcbx.Click += new System.EventHandler(this.pen_pcbx_Click);
             // 
+            // width_lbl
+            // 
+            this.width_lbl.AutoSize = true;
+            this.width_lbl.Location = new System.Drawing.Point(559, 31);
+            this.width_lbl.Name = "width_lbl";
+            this.width_lbl.Size = new System.Drawing.Size(0, 13);
+            this.width_lbl.TabIndex = 4;
+            // 
+            // width_trBar
+            // 
+            this.width_trBar.Location = new System.Drawing.Point(449, 27);
+            this.width_trBar.Maximum = 100;
+            this.width_trBar.Minimum = 1;
+            this.width_trBar.Name = "width_trBar";
+            this.width_trBar.Size = new System.Drawing.Size(104, 45);
+            this.width_trBar.TabIndex = 3;
+            this.width_trBar.Value = 5;
+            this.width_trBar.Scroll += new System.EventHandler(this.width_trBar_Scroll);
+            // 
             // currentColor_pcbx
             // 
             this.currentColor_pcbx.Location = new System.Drawing.Point(368, 27);
@@ -369,6 +261,32 @@
             this.currentColor_pcbx.Size = new System.Drawing.Size(44, 28);
             this.currentColor_pcbx.TabIndex = 2;
             this.currentColor_pcbx.TabStop = false;
+            this.currentColor_pcbx.Click += new System.EventHandler(this.currentColor_pcbx_Click);
+            // 
+            // Color_panel
+            // 
+            this.Color_panel.Controls.Add(this.Color_btn);
+            this.Color_panel.Controls.Add(this.pictureBox5);
+            this.Color_panel.Controls.Add(this.pictureBox4);
+            this.Color_panel.Controls.Add(this.pictureBox3);
+            this.Color_panel.Controls.Add(this.pictureBox2);
+            this.Color_panel.Controls.Add(this.pictureBox1);
+            this.Color_panel.Location = new System.Drawing.Point(4, 28);
+            this.Color_panel.Name = "Color_panel";
+            this.Color_panel.Size = new System.Drawing.Size(320, 27);
+            this.Color_panel.TabIndex = 1;
+            // 
+            // Color_btn
+            // 
+            this.Color_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Color_btn.ForeColor = System.Drawing.Color.White;
+            this.Color_btn.Location = new System.Drawing.Point(242, -1);
+            this.Color_btn.Name = "Color_btn";
+            this.Color_btn.Size = new System.Drawing.Size(75, 28);
+            this.Color_btn.TabIndex = 3;
+            this.Color_btn.Text = "More ...";
+            this.Color_btn.UseVisualStyleBackColor = false;
+            this.Color_btn.Click += new System.EventHandler(this.Color_btn_Click);
             // 
             // pictureBox5
             // 
@@ -425,6 +343,94 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.infoToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.clearToolStripMenuItem,
+            this.openToolStripMenuItem,
+            this.saveToolStripMenuItem,
+            this.closeToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // clearToolStripMenuItem
+            // 
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.clearToolStripMenuItem.Text = "Clear";
+            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.closeToolStripMenuItem.Text = "Close";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            // 
+            // infoToolStripMenuItem
+            // 
+            this.infoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutProgramToolStripMenuItem});
+            this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
+            this.infoToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.infoToolStripMenuItem.Text = "Info";
+            // 
+            // aboutProgramToolStripMenuItem
+            // 
+            this.aboutProgramToolStripMenuItem.Name = "aboutProgramToolStripMenuItem";
+            this.aboutProgramToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.aboutProgramToolStripMenuItem.Text = "About program";
+            this.aboutProgramToolStripMenuItem.Click += new System.EventHandler(this.aboutProgramToolStripMenuItem_Click);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.Filter = "Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = " \"Файлы изображений|*.jpg;*.png;*.jpeg\";";
+            // 
+            // Layer0_pcbx
+            // 
+            this.Layer0_pcbx.BackColor = System.Drawing.Color.White;
+            this.Layer0_pcbx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Layer0_pcbx.Location = new System.Drawing.Point(0, 100);
+            this.Layer0_pcbx.Name = "Layer0_pcbx";
+            this.Layer0_pcbx.Size = new System.Drawing.Size(800, 350);
+            this.Layer0_pcbx.TabIndex = 1;
+            this.Layer0_pcbx.TabStop = false;
+            this.Layer0_pcbx.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Layer0_pcbx_MouseClick);
+            this.Layer0_pcbx.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Layer0_pcbx_MouseDown);
+            this.Layer0_pcbx.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Layer0_pcbx_MouseMove);
+            this.Layer0_pcbx.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Layer0_pcbx_MouseUp);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -438,11 +444,6 @@
             this.menu_panel.ResumeLayout(false);
             this.menu_panel.PerformLayout();
             this.MOde_Panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.width_trBar)).EndInit();
-            this.Color_panel.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Layer0_pcbx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eraser_pxbx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipete_pcbx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fill_pcbx)).EndInit();
@@ -452,12 +453,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.rectangle_pcbx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.triangle_pcbx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pen_pcbx)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.width_trBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentColor_pcbx)).EndInit();
+            this.Color_panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Layer0_pcbx)).EndInit();
             this.ResumeLayout(false);
 
         }

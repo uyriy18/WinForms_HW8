@@ -95,7 +95,6 @@ namespace Paint
                         currentColor_pcbx.BackColor = color;
                         break;
                     case "eraser":
-                        Layer0_pcbx.Cursor = new Cursor(@"C:\Users\User\source\repos\Winforms_Exam_Paint\Winforms_Exam_Paint\bin\Debug\Cursors\eraser.cur");
                         pen.StartCap = pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;  // using round cap
                         g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;  // make's line more smoothy 
                         break;
@@ -210,8 +209,8 @@ namespace Paint
         }
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.ShowDialog();
-            if (saveFileDialog1.FileName != "")
+            DialogResult result = saveFileDialog1.ShowDialog();
+            if (saveFileDialog1.FileName != "" && result == DialogResult.OK)
             {
                 mainPic.Save(saveFileDialog1.FileName);
             }
@@ -219,8 +218,8 @@ namespace Paint
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openFileDialog1.ShowDialog();
-            if (openFileDialog1.FileName != "")
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (openFileDialog1.FileName != "" && result == DialogResult.OK)
             {
                 mainPic = (Bitmap)Image.FromFile(openFileDialog1.FileName);
                 Layer0_pcbx.Image = mainPic;
@@ -369,22 +368,22 @@ namespace Paint
 
         private void FloodFill(Bitmap bmp, Point pt, Color replacementColor)  // using  flood and fill algorithm
         {
-            Color targetColor = bmp.GetPixel(pt.X, pt.Y);
-            if (targetColor.ToArgb().Equals(replacementColor.ToArgb()))
+            Color targetColor = bmp.GetPixel(pt.X, pt.Y);                     // get color from selected pixel
+            if (targetColor.ToArgb().Equals(replacementColor.ToArgb()))       
             {
                 return;
             }
 
-            Stack<Point> pixels = new Stack<Point>();
+            Stack<Point> pixels = new Stack<Point>();                         // to store pixels will use Stack list
 
-            pixels.Push(pt);
-            while (pixels.Count != 0)
+            pixels.Push(pt);                                                  // push pixel in to stack
+            while (pixels.Count != 0)                                              
             {
-                Point temp = pixels.Pop();
-                int y1 = temp.Y;
-                while (y1 >= 0 && bmp.GetPixel(temp.X, y1) == targetColor)
+                Point temp = pixels.Pop();                                    // pop pixel
+                int y1 = temp.Y;                                              // set pixel position on Y axis
+                while (y1 >= 0 && bmp.GetPixel(temp.X, y1) == targetColor)    // getting up Y position to latest point meeting the condition
                 {
-                    y1--;
+                    y1--;                
                 }
                 y1++;
                 bool spanLeft = false;
@@ -395,7 +394,7 @@ namespace Paint
 
                     if (!spanLeft && temp.X > 0 && bmp.GetPixel(temp.X - 1, y1) == targetColor)
                     {
-                        pixels.Push(new Point(temp.X - 1, y1));
+                        pixels.Push(new Point(temp.X - 1, y1));               // move cursor position on 1 point left
                         spanLeft = true;
                     }
                     else if (spanLeft && temp.X - 1 == 0 && bmp.GetPixel(temp.X - 1, y1) != targetColor)
@@ -404,7 +403,7 @@ namespace Paint
                     }
                     if (!spanRight && temp.X < bmp.Width - 1 && bmp.GetPixel(temp.X + 1, y1) == targetColor)
                     {
-                        pixels.Push(new Point(temp.X + 1, y1));
+                        pixels.Push(new Point(temp.X + 1, y1));               // move cursor position on 1 point right
                         spanRight = true;
                     }
                     else if (spanRight && temp.X < bmp.Width - 1 && bmp.GetPixel(temp.X + 1, y1) != targetColor)
@@ -444,7 +443,7 @@ namespace Paint
             }
         }
 
-        private void fontHeight_cmbx_SelectedIndexChanged(object sender, EventArgs e)
+        private void fontHeight_cmbx_SelectedIndexChanged(object sender, EventArgs e)    // set font styles in combo box
         {
             if(fontHeight_cmbx.SelectedIndex != -1 && fontStyle_cmbx.SelectedIndex != -1)
             {
@@ -452,7 +451,7 @@ namespace Paint
             }
         }
 
-        private void fontStyle_cmbx_SelectedIndexChanged(object sender, EventArgs e)
+        private void fontStyle_cmbx_SelectedIndexChanged(object sender, EventArgs e)     // set font height in combo box
         {
             if (fontHeight_cmbx.SelectedIndex != -1 && fontStyle_cmbx.SelectedIndex != -1)
             {
@@ -460,7 +459,10 @@ namespace Paint
             }
         }
 
-  
+        private void currentColor_pcbx_Click(object sender, EventArgs e) // show color dialog
+        {
+            Color_btn_Click(sender, null);                
+        }
 
         void fillFontcomboBoxes()                         // filling font height and font style comboboxes
         {
