@@ -20,6 +20,7 @@ namespace Paint
         int Y;                       //mouse moving Y coordinate
         Bitmap mainPic;              //Canvas for drawing
         Bitmap tmpPic;               //Temporary layer for drawing
+        Bitmap dashPic;              //Temporary layer for highlight area
         Color color;                 //Chosen color (default - black)
         int width;                   //Width of our pen and brush
         string paintMode = "pen";    //Drawing mode, denpends on what we want to draw (rectangle, triangle, lines, pen , brush)
@@ -33,6 +34,10 @@ namespace Paint
         int fontHeight;              //for seting text height
         string fontStyle;            //for seting text style
         InstalledFontCollection fontList; // font styles collection
+        List<Rectangle> dashRectangleList;          // rectangle for highlight
+        Font font;
+
+
 
         public Form1()
         {
@@ -40,19 +45,23 @@ namespace Paint
             color = Color.Black;
             width = 5;                    
             currentColor_pcbx.BackColor = color;
-            mainPic = new Bitmap(1000, 1000);
-            tmpPic = new Bitmap(1000, 1000);
+            mainPic = new Bitmap(784, 641);
+            tmpPic = new Bitmap(784, 641);
+            dashPic = new Bitmap(784, 641);
             width_lbl.Text = width.ToString();
             pen = new Pen(color, width);
             fontHeight = 14;
             pointCollection = new List<Point>();
             fillFontcomboBoxes();                           // fill font height and fond style combo boxes
+            dashRectangleList = new List<Rectangle>();
+            font = new Font(fontStyle, fontHeight, FontStyle.Regular);
         }
 
         private void Layer0_pcbx_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
+
                 isMoving = true;
                 X0 = e.X;
                 Y0 = e.Y;
@@ -98,6 +107,9 @@ namespace Paint
                         pen.StartCap = pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;  // using round cap
                         g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;  // make's line more smoothy 
                         break;
+                    case "highlight":
+                        dashPic = mainPic;                               // save main canvas state
+                        break;
                 }
             }
 
@@ -110,7 +122,7 @@ namespace Paint
                 X = e.X;
                 Y = e.Y;
                 Graphics g = Graphics.FromImage(mainPic);
-                Graphics g1 = Graphics.FromImage(tmpPic);                // create new graphics for temp images
+                Graphics g1 = Graphics.FromImage(tmpPic);                         // create new graphics for temp images
                 switch (paintMode)
                 {
                     case "pen":
@@ -120,13 +132,13 @@ namespace Paint
                         Y0 = e.Y;
                         break;
                     case "rectangle":
-                        g1.Clear(Color.White);                            // drop previous temp rectangle. We will set on main layer only last rectangle after mouseUp event
-                        g1.DrawRectangle(pen, X0, Y0, X - X0, Y - Y0);    // draw new temp rectangle
+                        g1.Clear(Color.White);                                    // drop previous temp rectangle. We will set on main layer only last rectangle after mouseUp event
+                        g1.DrawRectangle(pen, X0, Y0, X - X0, Y - Y0);            // draw new temp rectangle
                         g1.DrawImage(mainPic, 0, 0);                              // transport main picture on temp layer
                         Layer0_pcbx.Image = tmpPic;                               // transport full composition on main layer
                         break;
-                    case "ellipse":                                       // as rectangle
-                        g1.Clear(Color.White);
+                    case "ellipse":                                               // as rectangle
+                        g1.Clear(Color.Yellow);
                         g1.DrawEllipse(pen, X0, Y0, X - X0, Y - Y0);
                         g1.DrawImage(mainPic, 0, 0);                              // transport main picture on temp layer
                         Layer0_pcbx.Image = tmpPic;                               // transport full composition on main layer
@@ -142,6 +154,21 @@ namespace Paint
                         Layer0_pcbx.Image = mainPic;
                         X0 = e.X;
                         Y0 = e.Y;
+                        break;
+                    case "highlight":                                             // as rectangle
+                        if(dashRectangleList.Count > 2)
+                        {
+                            dashRectangleList.Clear();
+                            Layer0_pcbx.Image = dashPic;
+                        }
+                        Rectangle dashRectangle = new Rectangle(X0, Y0, X - X0, Y - Y0);
+                        dashRectangleList.Add(dashRectangle);
+                        g1.Clear(Color.White);
+                        Pen dashPen = new Pen(Color.Black);                      
+                        dashPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;    // set dash style
+                        g1.DrawRectangle(dashPen, dashRectangleList[0]);    
+                        g1.DrawImage(mainPic, 0, 0);                             
+                        Layer0_pcbx.Image = tmpPic;                             
                         break;
 
                 }
@@ -170,7 +197,12 @@ namespace Paint
                     g.DrawLine(pen, X0, Y0, X, Y);
                     Layer0_pcbx.Image = mainPic;
                     break;
-               
+                case "highlight":
+                    Pen dashPen = new Pen(Color.Black);
+                    dashPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+                    g.DrawRectangle(dashPen, dashRectangleList[0]);        
+                    Layer0_pcbx.Image = mainPic;
+                    break;
 
             }
 
@@ -238,6 +270,7 @@ namespace Paint
             fill_pcbx.BorderStyle = BorderStyle.None;
             pipete_pcbx.BorderStyle = BorderStyle.None;
             eraser_pxbx.BorderStyle = BorderStyle.None;
+            highlight_pxbx.BorderStyle = BorderStyle.None;
         }
 
         private void triangle_pcbx_Click(object sender, EventArgs e)
@@ -252,6 +285,7 @@ namespace Paint
             fill_pcbx.BorderStyle = BorderStyle.None;
             pipete_pcbx.BorderStyle = BorderStyle.None;
             eraser_pxbx.BorderStyle = BorderStyle.None;
+            highlight_pxbx.BorderStyle = BorderStyle.None;
         }
 
         private void rectangle_pcbx_Click(object sender, EventArgs e)
@@ -266,6 +300,7 @@ namespace Paint
             fill_pcbx.BorderStyle = BorderStyle.None;
             pipete_pcbx.BorderStyle = BorderStyle.None;
             eraser_pxbx.BorderStyle = BorderStyle.None;
+            highlight_pxbx.BorderStyle = BorderStyle.None;
         }
 
         private void elipse_pcbx_Click(object sender, EventArgs e)
@@ -280,6 +315,7 @@ namespace Paint
             fill_pcbx.BorderStyle = BorderStyle.None;
             pipete_pcbx.BorderStyle = BorderStyle.None;
             eraser_pxbx.BorderStyle = BorderStyle.None;
+            highlight_pxbx.BorderStyle = BorderStyle.None;
         }
 
         private void line_pcbx_Click(object sender, EventArgs e)
@@ -294,6 +330,7 @@ namespace Paint
             fill_pcbx.BorderStyle = BorderStyle.None;
             pipete_pcbx.BorderStyle = BorderStyle.None;
             eraser_pxbx.BorderStyle = BorderStyle.None;
+            highlight_pxbx.BorderStyle = BorderStyle.None;
         }
         private void text_pcbx_Click(object sender, EventArgs e)
         {
@@ -307,6 +344,7 @@ namespace Paint
             fill_pcbx.BorderStyle = BorderStyle.None;
             pipete_pcbx.BorderStyle = BorderStyle.None;
             eraser_pxbx.BorderStyle = BorderStyle.None;
+            highlight_pxbx.BorderStyle = BorderStyle.None;
         }
 
         private void fill_pcbx_Click(object sender, EventArgs e)
@@ -321,6 +359,7 @@ namespace Paint
             fill_pcbx.BorderStyle = BorderStyle.Fixed3D;
             pipete_pcbx.BorderStyle = BorderStyle.None;
             eraser_pxbx.BorderStyle = BorderStyle.None;
+            highlight_pxbx.BorderStyle = BorderStyle.None;
         }
         private void pipete_pcbx_Click(object sender, EventArgs e)
         {
@@ -334,6 +373,7 @@ namespace Paint
             fill_pcbx.BorderStyle = BorderStyle.None;
             pipete_pcbx.BorderStyle = BorderStyle.Fixed3D;
             eraser_pxbx.BorderStyle = BorderStyle.None;
+            highlight_pxbx.BorderStyle = BorderStyle.None;
         }
         private void eraser_pxbx_Click(object sender, EventArgs e)
         {
@@ -347,10 +387,25 @@ namespace Paint
             fill_pcbx.BorderStyle = BorderStyle.None;
             pipete_pcbx.BorderStyle = BorderStyle.None;
             eraser_pxbx.BorderStyle = BorderStyle.Fixed3D;
+            highlight_pxbx.BorderStyle = BorderStyle.None;
             color = Color.White;
             currentColor_pcbx.BackColor = color;
             width_trBar.Value = width = 20;
             width_lbl.Text = width.ToString();
+        }
+        private void highlight_pxbx_Click(object sender, EventArgs e)
+        {
+            paintMode = "highlight";
+            pen_pcbx.BorderStyle = BorderStyle.None;
+            triangle_pcbx.BorderStyle = BorderStyle.None;
+            rectangle_pcbx.BorderStyle = BorderStyle.None;
+            ellipse_pcbx.BorderStyle = BorderStyle.None;
+            line_pcbx.BorderStyle = BorderStyle.None;
+            text_pcbx.BorderStyle = BorderStyle.None;
+            fill_pcbx.BorderStyle = BorderStyle.None;
+            pipete_pcbx.BorderStyle = BorderStyle.None;
+            eraser_pxbx.BorderStyle = BorderStyle.None;
+            highlight_pxbx.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void aboutProgramToolStripMenuItem_Click(object sender, EventArgs e)
@@ -423,7 +478,8 @@ namespace Paint
             textBox = new TextBox();                               // dynamicly creating textbox
             textBox.Multiline = true;
             textBox.Size = new Size((fontHeight < 20 ? 100 : fontHeight + 300) , (fontHeight > 20 ? fontHeight + 15: 25));
-            textBox.Font = new Font(fontStyle, fontHeight);
+            textBox.Font = font;
+            textBox.ForeColor = color;
             textBox.Location = new Point(textX, textY - 15);       // get mouse pisition for our text box
             Layer0_pcbx.Controls.Add(textBox);                     // add text box to our main picture box
             isTyping = true;                                       // enter in typing mode
@@ -435,7 +491,6 @@ namespace Paint
             {
                 Graphics g = Graphics.FromImage(mainPic);
                 message = textBox.Text;
-                Font font = new Font(fontStyle, fontHeight, FontStyle.Regular);
                 g.DrawString(message, font, new SolidBrush(color), new Point(textX, textY - 15));
                 Layer0_pcbx.Image = mainPic;
                 textBox.Dispose();                        // close textbox
@@ -448,6 +503,7 @@ namespace Paint
             if(fontHeight_cmbx.SelectedIndex != -1 && fontStyle_cmbx.SelectedIndex != -1)
             {
                 fontHeight = (int)fontHeight_cmbx.SelectedItem;
+                font =new Font(fontStyle, (int)fontHeight_cmbx.SelectedItem);
             }
         }
 
@@ -456,6 +512,7 @@ namespace Paint
             if (fontHeight_cmbx.SelectedIndex != -1 && fontStyle_cmbx.SelectedIndex != -1)
             {
                 fontStyle = (string)fontStyle_cmbx.SelectedItem;
+                font = new Font((string)fontStyle_cmbx.SelectedItem, FontHeight);
             }
         }
 

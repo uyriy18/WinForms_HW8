@@ -93,6 +93,16 @@ namespace Paint.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hatched_Rectangle {
+            get {
+                object obj = ResourceManager.GetObject("hatched Rectangle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Line {
             get {
                 object obj = ResourceManager.GetObject("Line", resourceCulture);

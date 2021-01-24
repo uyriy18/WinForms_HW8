@@ -32,6 +32,7 @@
             this.fontStyle_cmbx = new System.Windows.Forms.ComboBox();
             this.fontHeight_cmbx = new System.Windows.Forms.ComboBox();
             this.MOde_Panel = new System.Windows.Forms.Panel();
+            this.highlight_pxbx = new System.Windows.Forms.PictureBox();
             this.eraser_pxbx = new System.Windows.Forms.PictureBox();
             this.pipete_pcbx = new System.Windows.Forms.PictureBox();
             this.fill_pcbx = new System.Windows.Forms.PictureBox();
@@ -62,8 +63,10 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.Layer0_pcbx = new System.Windows.Forms.PictureBox();
+            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.menu_panel.SuspendLayout();
             this.MOde_Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.highlight_pxbx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eraser_pxbx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipete_pcbx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fill_pcbx)).BeginInit();
@@ -98,7 +101,7 @@
             this.menu_panel.Dock = System.Windows.Forms.DockStyle.Top;
             this.menu_panel.Location = new System.Drawing.Point(0, 0);
             this.menu_panel.Name = "menu_panel";
-            this.menu_panel.Size = new System.Drawing.Size(800, 100);
+            this.menu_panel.Size = new System.Drawing.Size(784, 100);
             this.menu_panel.TabIndex = 0;
             // 
             // fontStyle_cmbx
@@ -121,6 +124,7 @@
             // 
             // MOde_Panel
             // 
+            this.MOde_Panel.Controls.Add(this.highlight_pxbx);
             this.MOde_Panel.Controls.Add(this.eraser_pxbx);
             this.MOde_Panel.Controls.Add(this.pipete_pcbx);
             this.MOde_Panel.Controls.Add(this.fill_pcbx);
@@ -132,8 +136,22 @@
             this.MOde_Panel.Controls.Add(this.pen_pcbx);
             this.MOde_Panel.Location = new System.Drawing.Point(4, 62);
             this.MOde_Panel.Name = "MOde_Panel";
-            this.MOde_Panel.Size = new System.Drawing.Size(320, 32);
+            this.MOde_Panel.Size = new System.Drawing.Size(343, 32);
             this.MOde_Panel.TabIndex = 5;
+            // 
+            // highlight_pxbx
+            // 
+            this.highlight_pxbx.BackgroundImage = global::Paint.Properties.Resources.hatched_Rectangle;
+            this.highlight_pxbx.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.highlight_pxbx.Enabled = false;
+            this.highlight_pxbx.Image = global::Paint.Properties.Resources.hatched_Rectangle;
+            this.highlight_pxbx.Location = new System.Drawing.Point(310, 3);
+            this.highlight_pxbx.Name = "highlight_pxbx";
+            this.highlight_pxbx.Size = new System.Drawing.Size(28, 28);
+            this.highlight_pxbx.TabIndex = 9;
+            this.highlight_pxbx.TabStop = false;
+            this.highlight_pxbx.Visible = false;
+            this.highlight_pxbx.Click += new System.EventHandler(this.highlight_pxbx_Click);
             // 
             // eraser_pxbx
             // 
@@ -350,7 +368,7 @@
             this.infoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -423,7 +441,8 @@
             this.Layer0_pcbx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Layer0_pcbx.Location = new System.Drawing.Point(0, 100);
             this.Layer0_pcbx.Name = "Layer0_pcbx";
-            this.Layer0_pcbx.Size = new System.Drawing.Size(800, 350);
+            this.Layer0_pcbx.Size = new System.Drawing.Size(784, 641);
+            this.Layer0_pcbx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.Layer0_pcbx.TabIndex = 1;
             this.Layer0_pcbx.TabStop = false;
             this.Layer0_pcbx.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Layer0_pcbx_MouseClick);
@@ -431,19 +450,30 @@
             this.Layer0_pcbx.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Layer0_pcbx_MouseMove);
             this.Layer0_pcbx.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Layer0_pcbx_MouseUp);
             // 
+            // vScrollBar1
+            // 
+            this.vScrollBar1.Location = new System.Drawing.Point(760, 103);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(24, 638);
+            this.vScrollBar1.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(784, 741);
+            this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.Layer0_pcbx);
             this.Controls.Add(this.menu_panel);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.menu_panel.ResumeLayout(false);
             this.menu_panel.PerformLayout();
             this.MOde_Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.highlight_pxbx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eraser_pxbx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pipete_pcbx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fill_pcbx)).EndInit();
@@ -465,6 +495,7 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Layer0_pcbx)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -504,6 +535,8 @@
         private System.Windows.Forms.PictureBox pipete_pcbx;
         private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
         private System.Windows.Forms.PictureBox eraser_pxbx;
+        private System.Windows.Forms.PictureBox highlight_pxbx;
+        private System.Windows.Forms.VScrollBar vScrollBar1;
     }
 }
 
